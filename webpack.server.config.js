@@ -22,5 +22,12 @@ module.exports = {
   },
   // Need this to avoid error when working with Express
   // WARNING in ./node_modules/express/lib/view.js 81:13-25
-  externals: [nodeExternals()]
+  externals: [nodeExternals()],
+  plugins: [
+    // OccurrenceOrderPlugin is needed for webpack 1.x only
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    // Use NoErrorsPlugin for webpack 1.x
+    new webpack.NoEmitOnErrorsPlugin()
+  ]
 }
